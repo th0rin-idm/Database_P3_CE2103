@@ -1,0 +1,16 @@
+{% block body %}
+    <!-- Motor de plantillas Jinja 2, es interpolación -->
+    
+    <h1>User Creation</h1>
+
+    <form action="/crear" method="post">
+        <label for="name">User:</label>
+        <input type="text" id="Name" name="Name" style="width: 216px">
+        <br/><br>
+        <label for="name">Password:</label>
+        <input type="text" id="npass" name="npass">
+        <br/>
+        <input type="submit" id="Crear" value="Crear" name="Crear" style="width: 100px; height: 40px; position: relative; left: 0px; top: 30px">
+    </form>
+ 
+{% endblock %}

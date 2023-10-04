@@ -1,0 +1,155 @@
+{% extends './layout.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="item">
+            <p>
+                <head>
+                    <title>file-explorer</title>
+                </head>
+                <body>
+                    <div class="file-explorer">
+                        <h1>XML Store Creation</h1>
+                        <form action="/xmlStoreCreation" method="post" onsubmit="refresh(event)">
+                            <label for="name">Store Name:</label>
+                            <input type="text" id="storeName" name="storeName">
+                            <br><br>
+                            <label for="Attributes">Attributes:</label>
+                            <input type="text" id="attributes" name="attributes">
+                            <br><br>
+                            <input type="submit" id="send" value="Create" name="send">
+                        </form>
+                        
+                        <br><hr><br>
+                        
+                        <form action="/commit" method="post">
+                            <input type="submit" id="submit" value="Commit" name="submit">
+                        </form>
+
+                        <br><hr>
+
+                        <h2>Files</h2>
+                        <ul class="file-list" id="fileList">
+                            {% for c in data.src %}
+                                {% if c.type != 'storeInfo' %}
+                                    {%if c.type == 'file' %}
+                                        <li> 
+                                            {% for i in range(c.indentation) %}
+                                                &nbsp;&nbsp;&nbsp;&nbsp;<!-- Añade cuatro espacios -->
+                                            {% endfor %}
+                                            {{ c.name }}
+                                        </li>
+                                    {% else %}
+                                        <li>{{c.name}}</li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </body>
+            </p>
+        </div>
+        <div class="item">
+            <p>
+                <head>
+                    
+                </head>
+                <body>
+                    <div class="console">
+                        <h1>Command line</h1>
+                        <form action="/commandInterpreter" method="post">
+                            <input type="text" id="command" name="command" style="width: 970px; height: 320px;">
+                            <input type="submit" id="submit" value="Send" name="submit" style="width: 100px; height: 40px; position: relative; top: 10px">
+                        </form>
+                    </div>
+                </body>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="tabla">
+        <p>
+            <head>
+                <title>Tabla HTML</title>
+            </head>
+            <body>
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- For que define cantidad de encabezados -->
+                            {% for encabezado in data.encabezados %}
+                                <th>{{ encabezado }}</th>
+                            {% endfor %}
+                            
+                        </tr>
+                    </thead>
+                    <tbody>                            
+                        <!-- For que define cantidad de columnas y filas -->
+                        {% for contenido in data.contenidos %} 
+                            <tr>
+                                {% for subContenido in contenido %}
+                                    <td>{{ subContenido }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                            
+                    </tbody>
+                </table>
+            </body>
+        </p>
+    </div>
+
+    <style>
+        .tabla {
+            position: absolute;
+            top: 480px;
+            left: 330px;
+            width: 990px;
+            height: 200px;
+            padding: 10px;
+        }
+        .file-explorer {
+            width: 300px;
+            height: 800px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+        }
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        .file-list li:hover {
+            background-color: #f0f0f0;
+        }
+        .console {
+            width: 980px;
+            height: 450px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+        }
+        .file-explorer + .console {
+            margin-left: 10px;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #691b1b;
+            padding: 8px;
+        }
+        th {
+            background-color: #5dc1b9;
+            font-weight: bold;
+        }
+        
+    </style>
+{% endblock %}

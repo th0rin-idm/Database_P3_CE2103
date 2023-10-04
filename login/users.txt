@@ -1,0 +1,6 @@
+
+Evernote,10110
+Nosquio,00100111
+Nosqui,10110
+nos,10110
+Leo,10110

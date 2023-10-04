@@ -1,0 +1,23 @@
+{% extends './layout.html' %}
+
+{% block title %} 
+    hola
+{% endblock %}
+
+{% block body %}
+    <!-- Motor de plantillas Jinja 2, es interpolación -->
+    <h1>Login</h1>
+    <form action="/guardar" method="POST">
+        <label for="name">User:</label>
+        <input type="text" id="Nombre" name="Nombre" style="width: 208px">
+        <br/><br>
+        <label for="name">Password:</label>
+        <input type="text" id="pass" name="pass">
+        <br/>
+        <input type="submit" id="Enviar" value="Enviar" name="Enviar" style="width: 100px; height: 40px; position: relative; left: 0px; top: 20px">
+    </form>
+
+    <form action="/nueva" method="post">
+        <input type="submit" id="nuevo" value="nuevo" name="nuevo" style="width: 100px; height: 40px; position: relative; left: 155px; top: -20px">
+    </form>   
+{% endblock %}

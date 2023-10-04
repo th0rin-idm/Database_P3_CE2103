@@ -1,0 +1,1 @@
+{"columns": "name,marca,color,ram", "data": {"GooglePixel.xml": {"marca": "GooglePixel", "color": "Charcoal", "ram": "6"}}}
